@@ -21,7 +21,7 @@ public class BlogController {
     public BlogController(PostRepository p) {
         this.postRepository = p;
     }
-    @GetMapping("/")
+    @RequestMapping("/")
     public String listPosts(ModelMap m){
     //public List<Post> listPosts(){
         List<Post> allPosts = this.postRepository.getAllPosts();
@@ -30,7 +30,7 @@ public class BlogController {
         //return allPosts;
     }
 
-    @GetMapping("/post/{id}")
+    @RequestMapping("/post/{id}")
     public String postDetails(@PathVariable Long id, ModelMap modelMap){
         Post post = postRepository.findById(id);
         modelMap.put("post", post);
