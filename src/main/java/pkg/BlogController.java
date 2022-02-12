@@ -13,7 +13,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-@Controller
+@RestController
 public class BlogController {
     @Autowired
     private PostRepository postRepository;
@@ -22,12 +22,12 @@ public class BlogController {
         this.postRepository = p;
     }
     @RequestMapping("/")
-    public String listPosts(ModelMap m){
-    //public List<Post> listPosts(){
+    //public String listPosts(ModelMap m){
+    public List<Post> listPosts(){
         List<Post> allPosts = this.postRepository.getAllPosts();
-        m.put("posts", allPosts);
-        return "home";
-        //return allPosts;
+        //m.put("posts", allPosts);
+        //return "home";
+        return allPosts;
     }
 
     @RequestMapping("/post/{id}")
